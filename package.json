@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "install:all": "npm install && cd frontend --legacy-peer-deps && npm install && cd ../backend && npm install --legacy-peer-deps",
+    "install:all": "npm install && cd frontend && npm install --legacy-peer-deps && cd ../backend && npm install --legacy-peer-deps",
     "build": "cd frontend && npm run build && cd ../backend && npm run build",
     "start": "cd backend && npm run start:prod",
     "build:prod": "./scripts/build.sh && cd backend && npm run start:prod",
