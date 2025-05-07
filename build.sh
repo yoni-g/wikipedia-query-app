@@ -3,8 +3,8 @@
 # Build frontend
 echo "Building frontend..."
 cd frontend
-echo "Cleaning frontend node_modules..."
-rm -rf node_modules package-lock.json
+# echo "Cleaning frontend node_modules..."
+# rm -rf node_modules package-lock.json
 echo "Installing frontend dependencies..."
 npm install --legacy-peer-deps
 echo "Building frontend..."

@@ -20,11 +20,16 @@ class ApiService {
 
   constructor() {
     // Try to load token from localStorage
-    this.token = localStorage.getItem('userToken');
+    this.token = sessionStorage.getItem('userToken');
   }
 
   isUserRegistered(): boolean {
     return !!this.token;
+  }
+
+  resetToken(): void {
+    sessionStorage.removeItem('userToken')
+    this.token = ''
   }
 
   async registerUser(data: UserRegistration): Promise<string> {
@@ -44,7 +49,7 @@ class ApiService {
     this.token = result.token;
     
     // Save token to localStorage
-    localStorage.setItem('userToken', result.token);
+    sessionStorage.setItem('userToken', result.token);
     
     return result.token;
   }

@@ -25,6 +25,9 @@ const App = () => {
   const [articleData, setArticleData] = useState<ArticleData | null>(null);
 
   const handleNameContinue = (submittedName: string): void => {
+    // if(submittedName !== name){
+    //   apiService.resetToken()
+    // }
     setName(submittedName);
     setStep(2);
   };
@@ -33,13 +36,17 @@ const App = () => {
     setIsLoading(true);
     setError(null);
 
+    // if(selectedLanguage !== language){
+    //   apiService.resetToken()
+    // }
+
     try {
-      if (!apiService.isUserRegistered()) {
+      // if (!apiService.isUserRegistered()) {
         await apiService.registerUser({
-          userName: name || 'anonymous',
+          userName: name,
           language: selectedLanguage
         });
-      }
+      // }
       
       setLanguage(selectedLanguage);
       setStep(3);
@@ -64,8 +71,14 @@ const App = () => {
       setStep(4);
       setLeftPanelTitle("All set! Read your article");
     } catch (err) {
-      setError('Failed to fetch article. Please try a different topic.');
+      
       console.error('Article fetch error:', err);
+
+      if((err as Error).message.includes("404")){
+        setError('Oops... Couldn\'t find an article.. Please try a different topic.');
+      } else {
+        setError('Failed to fetch article.');
+      }
     } finally {
       setIsLoading(false);
     }
