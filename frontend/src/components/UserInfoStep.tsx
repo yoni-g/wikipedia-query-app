@@ -7,7 +7,7 @@ import { StepHeader } from './common/StepHeader';
 import { TermsMessage } from './common/TermsMessage';
 
 interface UserInfoStepProps {
-  onContinue: () => void;
+  onContinue: (email: string) => void;
   email: string;
   onEmailChange: (email: string) => void;
 }
@@ -25,7 +25,7 @@ const UserInfoStep: React.FC<UserInfoStepProps> = ({ onContinue, email, onEmailC
       return;
     }
     setError('');
-    onContinue();
+    onContinue(email);
   };
 
   return (

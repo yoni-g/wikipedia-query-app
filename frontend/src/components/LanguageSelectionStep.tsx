@@ -7,7 +7,7 @@ import { StepHeader } from './common/StepHeader';
 
 interface LanguageSelectionStepProps {
   onBack: () => void;
-  onContinue: () => void;
+  onContinue: (language: string) => Promise<void>;
   selectedLanguage: string;
   onLanguageChange: (language: string) => void;
 }
@@ -19,12 +19,21 @@ const languageOptions = [
   { value: 'de', label: 'German' }
 ];
 
+
+
 const LanguageSelectionStep: React.FC<LanguageSelectionStepProps> = ({
   onBack,
   onContinue,
   selectedLanguage,
   onLanguageChange
 }) => {
+  
+  const handleClick = (e: React.FormEvent) => {
+      e.preventDefault();
+      onContinue(selectedLanguage);
+  };
+
+
   return (
     <Panel className={styles.formContainer}>
       <StepHeader>
@@ -46,7 +55,7 @@ const LanguageSelectionStep: React.FC<LanguageSelectionStepProps> = ({
           <Button variant="secondary" onClick={onBack}>
             &lt; Back
           </Button>
-          <Button onClick={onContinue} disabled={!selectedLanguage}>
+          <Button onClick={handleClick} disabled={!selectedLanguage}>
             Continue &gt;
           </Button>
         </div>
