@@ -1,0 +1,31 @@
+.errorContainer {
+    background-color: #fee2e2;
+    border: 1px solid #ef4444;
+    color: #991b1b;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .message {
+    flex: 1;
+  }
+  
+  .closeButton {
+    padding: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    color: #991b1b;
+    background: none;
+    border: none;
+    margin-left: 12px;
+  }
+  
+  .closeButton:hover {
+    opacity: 0.8;
+  }
