@@ -3,6 +3,7 @@ import styles from '../App.module.css';
 import { Input } from './common/Input';
 import { Button } from './common/Button';
 import { Panel } from './common/Panel';
+import { StepHeader } from './common/StepHeader';
 
 interface TopicSelectionStepProps {
   onBack: () => void;
@@ -14,12 +15,17 @@ const TopicSelectionStep: React.FC<TopicSelectionStepProps> = ({ onBack, onConti
 
   return (
     <Panel className={styles.formContainer}>
-      <h3 className={styles.headline}>
-        What would you like to learn about?
-      </h3>
+      <StepHeader>
+        What would you like to read about?
+      </StepHeader>
+      <div className={styles.hint}>
+        <p>
+          Dogs? molecular culinary? everything goes...
+        </p>
+      </div>
       <div>
         <Input
-          label="Enter a topic"
+          label="Article subject"
           placeholder="e.g., Quantum Physics, History of Rome, Climate Change"
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
@@ -32,10 +38,6 @@ const TopicSelectionStep: React.FC<TopicSelectionStepProps> = ({ onBack, onConti
             Continue &gt;
           </Button>
         </div>
-        <p className={styles.hint}>
-          <span role="img" aria-label="bulb">💡</span>
-          Choose any topic you're curious about!
-        </p>
       </div>
     </Panel>
   );

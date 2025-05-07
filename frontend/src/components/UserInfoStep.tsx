@@ -3,20 +3,37 @@ import styles from "../App.module.css";
 import { Input } from './common/Input';
 import { Button } from './common/Button';
 import { Panel } from './common/Panel';
+import { StepHeader } from './common/StepHeader';
+import { TermsMessage } from './common/TermsMessage';
 
 interface UserInfoStepProps {
   onContinue: () => void;
+  email: string;
+  onEmailChange: (email: string) => void;
 }
 
-const UserInfoStep: React.FC<UserInfoStepProps> = ({ onContinue }) => {
-  const [email, setEmail] = useState('');
+const UserInfoStep: React.FC<UserInfoStepProps> = ({ onContinue, email, onEmailChange }) => {
+  const [error, setError] = useState<string>('');
+
+  const handleContinue = () => {
+    if (!email.trim()) {
+      setError('Please enter your email address');
+      return;
+    }
+    if (!/^[^@]+@[^@]{2,}\.[^@]{2,}$/.test(email)) {
+      setError('Please enter a valid email address');
+      return;
+    }
+    setError('');
+    onContinue();
+  };
 
   return (
     <Panel className={styles.formContainer}>
-      <h3 className={styles.headline}>
+      <StepHeader>
         Love learning new stuff?<br />
         get an article on any subject you like!
-      </h3>
+      </StepHeader>
       <div>
         <Input
           type="email"
@@ -24,19 +41,20 @@ const UserInfoStep: React.FC<UserInfoStepProps> = ({ onContinue }) => {
           label="Type your email address"
           placeholder="me@email.com"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            onEmailChange(e.target.value);
+            if (error) setError('');
+          }}
+          error={error}
         />
         <Button 
-          onClick={onContinue}
-          disabled={!email.trim()}
-          fullWidth
+          onClick={handleContinue}
         >
           Continue &gt;
         </Button>
-        <p className={styles.terms}>
-          <span role="img" aria-label="lock">🔒</span>
+        <TermsMessage>
           By clicking "continue" I agree to Pery's terms
-        </p>
+        </TermsMessage>
       </div>
     </Panel>
   );
