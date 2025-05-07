@@ -1,0 +1,16 @@
+ services:
+  - type: web
+    name: pery-app
+    env: node
+    buildCommand: |
+      export NODE_OPTIONS="--max_old_space_size=2048"
+      chmod +x build.sh
+      ./build.sh
+    startCommand: cd backend && npm run start:prod
+    envVars:
+      - key: NODE_VERSION
+        value: 16.x
+      - key: NODE_ENV
+        value: production
+      - key: NPM_CONFIG_LEGACY_PEER_DEPS
+        value: true

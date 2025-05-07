@@ -14,7 +14,6 @@ const App = () => {
   const [topic, setTopic] = useState<string>('');
   const [leftPanelTitle, setLeftPanelTitle] = useState<string>("Welcome to Pery!");
 
-  // Mock article data (in real app, this would come from your API)
   const mockArticle = {
     title: "Introduction to " + topic,
     intro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mattis urna in dolor blandit, id eleifend sapien consequat. Suspendisse porta elit in tellus vehicula, a pulvinar risus lobortis. Aliquam iaculis leo elementum sapien malesuada consequat. Donec non turpis tincidunt, imperdiet nisl ut, pretium lacus. Maecenas quis mi lacinia, porta enim nec, ultricies ante. Cras ex nibh, accumsan vel justo sit amet, ullamcorper tincidunt sapien. Pellentesque quis diam eu nulla luctus consequat. Nam eget lacus risus. Quisque dapibus, leo at porta pellentesque, velit ex condimentum risus, luctus lacinia lectus nisl nec nisi. Mauris facilisis dictum eros ut tincidunt. Vestibulum ultricies turpis vitae massa elementum elementum. Ut interdum aliquet dapibus. Fusce non gravida sapien. Nam tempus accumsan lectus vitae hendrerit. Morbi gravida dolor vitae imperdiet porta."
