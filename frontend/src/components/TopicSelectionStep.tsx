@@ -7,11 +7,26 @@ import { StepHeader } from './common/StepHeader';
 
 interface TopicSelectionStepProps {
   onBack: () => void;
-  onContinue: () => void;
+  onContinue: (topic: string) => void;
+  topic: string;
+  onTopicChange: (topic: string) => void;
 }
 
-const TopicSelectionStep: React.FC<TopicSelectionStepProps> = ({ onBack, onContinue }) => {
-  const [topic, setTopic] = useState('');
+const TopicSelectionStep: React.FC<TopicSelectionStepProps> = ({
+  onBack,
+  onContinue,
+  topic,
+  onTopicChange
+}) => {
+  const [error, setError] = useState<string>('');
+
+  const handleContinue = () => {
+    if (!topic.trim()) {
+      setError('Please enter a topic you want to read about');
+      return;
+    }
+    onContinue(topic);
+  };
 
   return (
     <Panel className={styles.formContainer}>
@@ -28,13 +43,17 @@ const TopicSelectionStep: React.FC<TopicSelectionStepProps> = ({ onBack, onConti
           label="Article subject"
           placeholder="e.g., Quantum Physics, History of Rome, Climate Change"
           value={topic}
-          onChange={(e) => setTopic(e.target.value)}
+          onChange={(e) => {
+            onTopicChange(e.target.value);
+            if (error) setError('');
+          }}
+          error={error}
         />
         <div className={styles.buttonGroup}>
           <Button variant="secondary" onClick={onBack}>
             &lt; Back
           </Button>
-          <Button onClick={onContinue} disabled={!topic.trim()}>
+          <Button onClick={handleContinue}>
             Continue &gt;
           </Button>
         </div>

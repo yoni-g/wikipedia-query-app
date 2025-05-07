@@ -275,3 +275,34 @@ Radio Group Styles
   border-radius: 50%;
   margin-right: 0.5rem;
 }
+
+.applauseIcon {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.articleContainer {
+  max-width: 80%;
+}
+.articlePreview {
+  background-color: #f7f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.articleIntro {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
