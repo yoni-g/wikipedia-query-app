@@ -1,42 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../App.module.css";
+import { Input } from './common/Input';
+import { Button } from './common/Button';
+import { Panel } from './common/Panel';
 
 interface UserInfoStepProps {
   onContinue: () => void;
 }
 
 const UserInfoStep: React.FC<UserInfoStepProps> = ({ onContinue }) => {
+  const [email, setEmail] = useState('');
+
   return (
-    <>
-      <div className={styles.rightPanel}>
-        <div className={styles.formContainer}>
-          <h3 className={styles.headline}>
-            Love learning new stuff?<br />
-            get an article on any subject you like!
-          </h3>
-          <div>
-            <label htmlFor="email" className={styles.label}>
-              Type your email address
-            </label>
-            <input 
-              type="email" 
-              id="email" 
-              className={styles.input} 
-              placeholder="me@email.com" 
-            />
-            <button 
-              className={styles.button} 
-              onClick={onContinue}>
-                Continue 	&gt;
-            </button>
-            <p className={styles.terms}>
-              <span role="img" aria-label="lock">🔒</span>
-              By clicking "continue" I agree to Pery's terms
-            </p>
-          </div>
-        </div>
+    <Panel className={styles.formContainer}>
+      <h3 className={styles.headline}>
+        Love learning new stuff?<br />
+        get an article on any subject you like!
+      </h3>
+      <div>
+        <Input
+          type="email"
+          id="email"
+          label="Type your email address"
+          placeholder="me@email.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Button 
+          onClick={onContinue}
+          disabled={!email.trim()}
+          fullWidth
+        >
+          Continue &gt;
+        </Button>
+        <p className={styles.terms}>
+          <span role="img" aria-label="lock">🔒</span>
+          By clicking "continue" I agree to Pery's terms
+        </p>
       </div>
-    </>
+    </Panel>
   );
 };
 
