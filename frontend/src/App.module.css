@@ -1,0 +1,164 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.screen {
+  /* position: absolute; */
+  /* width: 100%; */
+  /* height: 100%; */
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateX(-100%);
+  z-index: 0;
+}
+
+.container {
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  height: 100vh;
+}
+
+.leftPanel {
+  flex: 0.5;
+  background: linear-gradient(180deg, #7A5FFF, #48C6EF);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  
+}
+
+.logo {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  font-size: 1rem;
+  opacity: 0.5;
+}
+
+.leftPanelText {
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.rightPanel {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 3rem;
+}
+
+.formContainer {
+  max-width: 25rem;
+  width: 100%;
+  text-align: left;
+}
+
+.headline {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.subheadline {
+  font-weight: 400;
+  font-size: 1.1rem;
+  display: block;
+  margin-top: 0.25rem;
+  color: #555;
+}
+
+.label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.button {
+  background: #7A5FFF;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background: #684ee2;
+}
+
+.terms {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #444;
+  background: #e6f0ed;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.faqBar {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 30px;
+  padding: 0.25rem 0.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+}
+
+.faqButton {
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  color: #333;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
