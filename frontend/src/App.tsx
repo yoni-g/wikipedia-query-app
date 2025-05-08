@@ -16,7 +16,7 @@ interface ArticleData {
 
 const App = () => {
   const [step, setStep] = useState<number>(1);
-  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
   const [language, setLanguage] = useState<string>('');
   const [topic, setTopic] = useState<string>('');
   const [leftPanelTitle, setLeftPanelTitle] = useState<string>("Welcome to Pery!");
@@ -24,29 +24,38 @@ const App = () => {
   const [error, setError] = useState<string | null>(null);
   const [articleData, setArticleData] = useState<ArticleData | null>(null);
 
-  const handleNameContinue = (submittedName: string): void => {
-    // if(submittedName !== name){
-    //   apiService.resetToken()
-    // }
-    setName(submittedName);
+  // user name handlers 
+  const handleEmailChange = (newEmail: string): void => {
+    if(newEmail !== email){
+      apiService.resetToken()
+    }
+    setEmail(newEmail)
+  }
+
+  const handleEmailContinue = (submittedEmail: string): void => {
+    setEmail(submittedEmail);
     setStep(2);
   };
+
+  // language handlers 
+  const handleLanguageChange = (newLang: string): void => {
+    if(newLang !== language){
+      apiService.resetToken()
+    }
+    setLanguage(newLang)
+  }
 
   const handleLanguageContinue = async (selectedLanguage: string): Promise<void> => {
     setIsLoading(true);
     setError(null);
 
-    // if(selectedLanguage !== language){
-    //   apiService.resetToken()
-    // }
-
     try {
-      // if (!apiService.isUserRegistered()) {
+      if (!apiService.isUserRegistered()) {
         await apiService.registerUser({
-          userName: name,
+          userName: email,
           language: selectedLanguage
         });
-      // }
+      }
       
       setLanguage(selectedLanguage);
       setStep(3);
@@ -58,6 +67,7 @@ const App = () => {
     }
   };
 
+  //  topic handler 
   const handleTopicContinue = async (selectedTopic: string): Promise<void> => {
     setIsLoading(true);
     setError(null);
@@ -84,6 +94,7 @@ const App = () => {
     }
   };
 
+  // button handlers 
   const handleBackToEmail = (): void => {
     setStep(1);
     setLeftPanelTitle("Welcome to Pery!");
@@ -112,9 +123,9 @@ const App = () => {
           />
           <div className={`${styles.screen} ${step === 1 ? styles.visible : styles.hidden}`}>
             <UserInfoStep 
-              onContinue={handleNameContinue}
-              email={name}
-              onEmailChange={setName}
+              onContinue={handleEmailContinue}
+              email={email}
+              onEmailChange={handleEmailChange}
             />
           </div>
           <div className={`${styles.screen} ${step === 2 ? styles.visible : styles.hidden}`}>
@@ -122,7 +133,7 @@ const App = () => {
               onBack={handleBackToEmail}
               onContinue={handleLanguageContinue}
               selectedLanguage={language}
-              onLanguageChange={setLanguage}
+              onLanguageChange={handleLanguageChange}
             />
           </div>
           <div className={`${styles.screen} ${step === 3 ? styles.visible : styles.hidden}`}>
