@@ -90,7 +90,7 @@
 
 .formContainer {
   max-width: 25rem;
-  width: 100%;
+  width: 80%;
   text-align: left;
 }
 
@@ -312,4 +312,105 @@ Radio Group Styles
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 1rem;
+}
+
+.container {
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  height: 100vh;
+  flex-direction: row;
+}
+
+.leftPanel {
+  flex: 0.5;
+  background: linear-gradient(180deg, #7A5FFF, #48C6EF);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-width: 300px;
+}
+
+.rightPanel {
+  flex: 1.5;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  overflow-y: auto;
+  padding-right: 16px; 
+  margin-bottom: 20px;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .leftPanel {
+    flex: 0.3;
+    min-width: 250px;
+  }
+
+  .rightPanel {
+    flex: 0.7;
+  }
+
+  .leftPanelText {
+    font-size: 2rem;
+  }
+
+  .screen {
+    padding-left: 2rem;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .leftPanel {
+    flex: none;
+    /* min-width: 100%; */
+    padding: 1rem;
+    min-height: auto;
+    justify-content: flex-start;
+  }
+
+  .rightPanel {
+    flex: 1;
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .leftPanelText {
+    font-size: 1.5rem;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0.5rem;
+  }
+
+  .screen {
+    padding-left: 1rem;
+    padding-top: 10%;
+  }
+
+  .articleContainer {
+    max-width: 92%;
+    padding-bottom: 10rem;
+  }
 }

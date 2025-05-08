@@ -118,7 +118,7 @@ const App = () => {
         <LeftPanel title={leftPanelTitle} />
         <div className={styles.rightPanel}>
           <ErrorMessage 
-            message={error || ''} 
+            message={error} 
             onDismiss={() => setError(null)} 
           />
           <div className={`${styles.screen} ${step === 1 ? styles.visible : styles.hidden}`}>

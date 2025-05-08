@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ErrorMessage.module.css';
 
 interface ErrorMessageProps {
-  message: string;
+  message?: string | null;
   onDismiss: () => void;
 }
 
