@@ -1,9 +1,13 @@
 /* index.css or App.module.css */
-/* @import url('https://fonts.cdnfonts.com/css/gazpacho'); or Fontshare/CDN URL */
+/* @import url('../public/Gazpacho-Black.ttf'); */
 /* 
 :root {
   --font-primary: 'Gazpacho', sans-serif;
 } */
+@font-face {
+  font-family: Gazpacho-Black;
+  src: url("../public/Gazpacho-Black.ttf");
+}
 
 body {
   font-family: var(--font-primary);
